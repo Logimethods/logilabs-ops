@@ -1,0 +1,6 @@
+#!/bin/sh
+set -xe
+cd git-assets/terraform
+terraform -version
+echo $private_key_id
+printenv

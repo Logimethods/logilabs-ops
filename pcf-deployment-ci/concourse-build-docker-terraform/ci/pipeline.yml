@@ -1,0 +1,26 @@
+---
+jobs:  
+- name: build-docker-image
+  public: true
+  serial: true
+  plan:
+  - get: git-concourse-build-docker-image
+    trigger: true
+  - put: docker-image
+    params:
+      build: git-concourse-build-docker-image
+
+resources:  
+- name: git-concourse-build-docker-image
+  type: git
+  source:
+    uri: https://github.com/igor-fomenko/Concourse-Build-Docker-Image
+    branch: master
+
+- name: docker-image
+  type: docker-image
+  source:
+    email: {{docker-hub-email}}
+    username: {{docker-hub-username}}
+    password: {{docker-hub-password}}
+    repository: {{docker-create-concourse-go-image}}

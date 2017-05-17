@@ -1,0 +1,18 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: igorf211/pcf-terraform
+    tag: "latest"
+inputs:
+- name: git-assets
+
+params:
+  project_id:
+  private_key_id:
+  bosh_password: admin
+  
+run:
+  path: git-assets/ci/tasks/apply-terraform-script

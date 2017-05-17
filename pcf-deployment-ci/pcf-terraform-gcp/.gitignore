@@ -1,0 +1,8 @@
+tmp/
+ci/credentials.yml
+ci/pipeline.yml
+terraform/*.tfstate.*
+terraform/*.tfstate
+terraform/terraform.key.json
+terraform/*.tfvars
+terraform/account.json
