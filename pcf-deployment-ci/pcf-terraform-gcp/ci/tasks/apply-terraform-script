@@ -1,6 +1,6 @@
 #!/bin/sh
 set -xe
-cd git-assets/terraform
+cd git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
 terraform -version
 echo $private_key_id
 printenv
