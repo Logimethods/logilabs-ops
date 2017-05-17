@@ -3,4 +3,4 @@ terraform/*.tfstate.*
 terraform/*.tfstate
 terraform/terraform.key.json
 terraform/*.tfvars
-terraform/account.json
+terraform/confidential.json

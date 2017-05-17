@@ -1,6 +1,9 @@
 #!/bin/sh
 set -xe
 cd git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
+ls
+sed -i -- 's/project_id_value/pivotal-lab/g' account.json
+cat account.json
 terraform -version
 echo $private_key_id
 printenv
