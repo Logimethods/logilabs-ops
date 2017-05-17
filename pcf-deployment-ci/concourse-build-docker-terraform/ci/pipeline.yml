@@ -14,8 +14,9 @@ resources:
 - name: git-concourse-build-docker-image
   type: git
   source:
-    uri: https://github.com/igor-fomenko/Concourse-Build-Docker-Image
+    uri: https://github.com/Logimethods/logilabs-ops.git
     branch: master
+    paths: pcf-deployment-ci/concourse-build-docker-terraform/Dockerfile
 
 - name: docker-image
   type: docker-image
