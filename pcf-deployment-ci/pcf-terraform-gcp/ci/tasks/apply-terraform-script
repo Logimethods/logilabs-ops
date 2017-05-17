@@ -2,7 +2,11 @@
 set -xe
 cd git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
 ls
-sed -i -- 's/project_id_value/'"$private_key_id"'/g' account.json
+sed -i -- 's/private_key_id_value/'"$private_key_id"'/g' account.json
+sed -i -- 's/project_id_value/'"$project_id"'/g' account.json
+sed -i -- 's/private_key_value/'"$private_key"'/g' account.json
+sed -i -- 's/client_email_value/'"$client_email"'/g' account.json
+sed -i -- 's/client_id_value/'"$client_id"'/g' account.json
 cat account.json
 terraform -version
 echo $private_key_id
