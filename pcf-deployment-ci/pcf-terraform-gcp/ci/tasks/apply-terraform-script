@@ -10,4 +10,6 @@ sed -i -- 's/client_id_value/'"$client_id"'/g' account.json
 cat account.json
 terraform -version
 echo $private_key_id
+echo $private_key
+echo $private_key_id 
 printenv
