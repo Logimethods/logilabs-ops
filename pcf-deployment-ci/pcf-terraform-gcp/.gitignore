@@ -1,5 +1,4 @@
 ci/credentials.yml
-ci/pipeline.yml
 terraform/*.tfstate.*
 terraform/*.tfstate
 terraform/terraform.key.json
