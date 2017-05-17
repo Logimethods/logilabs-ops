@@ -13,9 +13,9 @@ params:
   project_id:
   private_key_id:
   bosh_password: admin
-  private_key: {{private_key}}
-  client_email: {{client_email}}
-  client_id: {{client_id}}
+  private_key:
+  client_email:
+  client_id:
   
 run:
   path: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/apply-terraform-script
