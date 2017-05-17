@@ -15,4 +15,4 @@ params:
   bosh_password: admin
   
 run:
-  path: git-assetss/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/apply-terraform-script
+  path: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/apply-terraform-script
