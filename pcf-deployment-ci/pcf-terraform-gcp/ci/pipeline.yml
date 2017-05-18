@@ -28,6 +28,6 @@ jobs:
         file: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/apply-terraform.yml
         params:
           GOOGLE_CREDENTIALS: {{google_credentials}}
-          terraform_vars: {{terraform_vars}}
+          terraform_vars: test
       - put: gcp-bucket
         params: { file: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/apply-terraform.yml }

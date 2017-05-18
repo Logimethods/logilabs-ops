@@ -2,5 +2,4 @@ ci/credentials.yml
 terraform/*.tfstate.*
 terraform/*.tfstate
 terraform/terraform.key.json
-terraform/*.tfvars
 terraform/confidential.json
