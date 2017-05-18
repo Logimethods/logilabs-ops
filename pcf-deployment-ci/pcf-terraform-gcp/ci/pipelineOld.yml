@@ -10,7 +10,19 @@ resources:
   source:
     bucket: pcf-ci-data
     versioned_file: terraform/*.json
-    json_key: {{test_key}}
+    json_key: |
+      {
+        "type": "service_account",
+        "project_id": {{project_id}},
+        "private_key_id": {{private_key_id}},
+        "private_key": {{private_key}},
+        "client_email": {{client_email}},
+        "client_id": {{client_id}},
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://accounts.google.com/o/oauth2/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/1051958956746-compute%40developer.gserviceaccount.com"
+      }
 
 - name: git-assets
   type: git
@@ -32,6 +44,6 @@ jobs:
           private_key: {{private_key}}
           client_email: {{client_email}}
           client_id: {{client_id}}
-          GOOGLE_CREDENTIALS: {{test_key}}
+          test_key: {{test_key}}
       - put: gcp-bucket
         params: { file: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/apply-terraform.yml }
