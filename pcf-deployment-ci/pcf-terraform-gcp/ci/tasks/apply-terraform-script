@@ -3,7 +3,8 @@ set -xe
 cd git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
 ls
 echo "$GOOGLE_CREDENTIALS"
-cat terraform.tfvars
+echo "$TF_VAR_ssl_cert_private_key"
+echo "$TF_VAR_ssl_cert"
 terraform get
 terraform plan 
 

@@ -29,5 +29,7 @@ jobs:
         params:
           GOOGLE_CREDENTIALS: {{google_credentials}}
           terraform_vars: test
+          TF_VAR_ssl_cert: ssl_cert
+          TF_VAR_ssl_cert_private_key: ssl_cert_private_key
       - put: gcp-bucket
         params: { file: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/apply-terraform.yml }
