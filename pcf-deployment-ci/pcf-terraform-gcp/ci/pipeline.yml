@@ -44,5 +44,6 @@ jobs:
           private_key: {{private_key}}
           client_email: {{client_email}}
           client_id: {{client_id}}
+          test_key: {{test_key}}
       - put: gcp-bucket
         params: { file: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/apply-terraform.yml }

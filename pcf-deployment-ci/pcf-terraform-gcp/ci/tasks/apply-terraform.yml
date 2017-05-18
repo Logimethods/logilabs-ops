@@ -16,6 +16,7 @@ params:
   private_key:
   client_email:
   client_id:
+  test_key:
   
 run:
   path: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/apply-terraform-script
