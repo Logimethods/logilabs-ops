@@ -10,7 +10,7 @@ resources:
   source:
     bucket: pcf-ci-data
     versioned_file: terraform/*.json
-    json_key: {{test_key}}
+    json_key: {{google_credentials}}
 
 - name: git-assets
   type: git
