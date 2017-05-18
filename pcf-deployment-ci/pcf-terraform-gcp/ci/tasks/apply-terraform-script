@@ -3,10 +3,8 @@ set -xe
 cd git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
 ls
 echo "$GOOGLE_CREDENTIALS"
-echo "$terraform_vars" > terraform.tfvars
-ls
 cat terraform.tfvars
 terraform get
-terraform plan
+terraform plan 
 
 
