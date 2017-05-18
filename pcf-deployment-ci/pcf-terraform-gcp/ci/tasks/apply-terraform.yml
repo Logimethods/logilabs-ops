@@ -10,12 +10,7 @@ inputs:
 - name: git-assets
 
 params:
-  project_id:
-  private_key_id:
-  bosh_password: admin
-  private_key:
-  client_email:
-  client_id:
+  terraform_vars:
   GOOGLE_CREDENTIALS:
   
 run:
