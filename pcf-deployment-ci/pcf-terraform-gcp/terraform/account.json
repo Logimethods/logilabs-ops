@@ -2,7 +2,7 @@
   "type": "service_account",
   "project_id": project_id_value,
   "private_key_id": private_key_id_value,
-  "private_key": private_key_value,
+  "private_key": private_key,
   "client_email": client_email_value,
   "client_id": client_id_value,
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
