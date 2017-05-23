@@ -9,7 +9,7 @@ resources:
   type: google-cloud-storage
   source:
     bucket: pcf-ci-data
-    versioned_file: terraform/*.json
+    versioned_file: terraform/account.json
     json_key: {{google_credentials}}
 
 - name: git-assets

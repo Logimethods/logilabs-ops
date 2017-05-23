@@ -4,16 +4,11 @@ ls gcp-bucket
 
 cd git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
 ls
-echo "$GOOGLE_CREDENTIALS"
-echo "$TF_VAR_ssl_cert_private_key"
-echo "$TF_VAR_ssl_cert"
 terraform get
 terraform plan 
 touch terraform.tfstate
 echo "mystatus" >> terraform.tfstate
-pwd
-ls
-cat terraform.tfstate
+cat git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform/terraform.tfstate
 
 
 
