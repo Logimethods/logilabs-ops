@@ -22,7 +22,7 @@ jobs:
   - name: terraform-gcp
     public: true
     plan:
-      - get: git-assets
+      - get: gcp-bucket
         trigger: true
       - task: terraform
         file: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/apply-terraform.yml
