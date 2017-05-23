@@ -1,7 +1,7 @@
 #!/bin/sh
 set -xe
-cd gcp-bucket
-ls
+ls gcp-bucket
+
 cd git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
 ls
 echo "$GOOGLE_CREDENTIALS"
