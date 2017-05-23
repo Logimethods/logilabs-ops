@@ -10,7 +10,6 @@ inputs:
 - name: git-assets
 
 params:
-  terraform_vars:
   GOOGLE_CREDENTIALS:
   TF_VAR_ssl_cert:
   TF_VAR_ssl_cert_private_key:
