@@ -11,6 +11,9 @@ terraform get
 terraform plan 
 touch terraform.tfstate
 echo "mystatus" >> terraform.tfstate
+pwd
+ls
+cat terraform.tfstate
 
 
 
