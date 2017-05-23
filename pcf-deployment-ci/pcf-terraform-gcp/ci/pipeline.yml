@@ -24,6 +24,8 @@ jobs:
     plan:
       - get: gcp-bucket
         trigger: true
+      - get: git-assets
+        trigger: true
       - task: terraform
         file: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/apply-terraform.yml
         params:

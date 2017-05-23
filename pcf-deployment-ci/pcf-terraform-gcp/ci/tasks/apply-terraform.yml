@@ -8,6 +8,7 @@ image_resource:
     tag: "latest"
 inputs:
 - name: gcp-bucket
+- name: git-assets
 
 params:
   GOOGLE_CREDENTIALS:
