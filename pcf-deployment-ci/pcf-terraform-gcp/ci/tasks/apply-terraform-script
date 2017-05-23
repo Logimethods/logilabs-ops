@@ -1,13 +1,14 @@
 #!/bin/sh
 set -xe
+pwd
 ls gcp-bucket
-
 cd git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
-ls
 terraform get
 terraform plan 
 touch terraform.tfstate
 echo "mystatus" >> terraform.tfstate
+cd ~
+pwd
 cat git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform/terraform.tfstate
 
 
