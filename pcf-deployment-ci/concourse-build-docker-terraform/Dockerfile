@@ -1,8 +1,9 @@
-FROM alpine:latest
-MAINTAINER "HashiCorp Terraform Team <terraform@hashicorp.com>"
+FROM python:2.7-alpine
+LABEL maintainer "igor.fomenko@logimethods.com"
 
 ENV TERRAFORM_VERSION=0.9.4
 ENV TERRAFORM_SHA256SUM=cc1cffee3b82820b7f049bb290b841762ee920aef3cf4d95382cc7ea01135707
+ENV GSUTIL_VERSION=4.24
 
 RUN apk add --update git curl openssh && \
     curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
