@@ -23,4 +23,4 @@ RUN apk add --update git curl openssh && \
   && apk del build-deps \
   && rm -rf /var/cache/apk/*
 
-ENTRYPOINT ["/bin/terraform"]
+ENTRYPOINT ["/bin/sh"]
