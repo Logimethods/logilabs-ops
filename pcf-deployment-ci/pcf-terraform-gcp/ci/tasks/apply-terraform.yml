@@ -14,6 +14,9 @@ params:
   GOOGLE_CREDENTIALS:
   TF_VAR_ssl_cert:
   TF_VAR_ssl_cert_private_key:
+  gs_secret_access_key:
+  gs_access_key_id:
+  default_project_id:
   
 run:
   path: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/apply-terraform-script
