@@ -2,7 +2,9 @@
 set -xe
 cat git-assets/pcf-deployment-ci/pcf-terraform-gcp/gcp/boto.txt
 echo $gs_secret_access_key
-sed -i -- "s/<gs_secret_access_key>/$gs_secret_access_key/g" boto.txt
+sed -i -- "s/<gs_secret_access_key>/$gs_secret_access_key/g" git-assets/pcf-deployment-ci/pcf-terraform-gcp/gcp/boto.txt
+sed -i -- "s/<default_project_id>/$default_project_id/g" git-assets/pcf-deployment-ci/pcf-terraform-gcp/gcp/boto.txt
+sed -i -- "s/<gs_access_key_id>/$gs_access_key_id/g" git-assets/pcf-deployment-ci/pcf-terraform-gcp/gcp/boto.txt
 cp git-assets/pcf-deployment-ci/pcf-terraform-gcp/gcp/boto.txt /root/.boto
 cat /root/.boto
 gsutil ls gs://pcf-ci-data/terraform 
