@@ -7,7 +7,6 @@ image_resource:
     repository: igorf211/pcf-terraform
     tag: "latest"
 inputs:
-- name: gcp-bucket
 - name: git-assets
 
 params:

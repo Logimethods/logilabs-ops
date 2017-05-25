@@ -1,16 +1,15 @@
 #!/bin/sh
 set -xe
-pwd
-ls -la gcp-bucket
+cat git-assets/pcf-deployment-ci/pcf-terraform-gcp/gcp/boto.txt
+echo $gs_secret_access_key
+sed -i -- "s/<gs_secret_access_key>/$gs_secret_access_key/g" boto.txt
+cp git-assets/pcf-deployment-ci/pcf-terraform-gcp/gcp/boto.txt /root/.boto
+cat /root/.boto
+gsutil ls gs://pcf-ci-data/terraform 
 cd git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
 terraform get
 terraform plan 
-touch terraform.tfstate
-echo "mystatus" >> terraform.tfstate
-ls -la
-cd ../../../..
-pwd
-cat git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform/terraform.tfstate
+
 
 
 

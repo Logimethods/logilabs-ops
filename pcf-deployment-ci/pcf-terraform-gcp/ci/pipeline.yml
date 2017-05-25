@@ -22,8 +22,6 @@ jobs:
   - name: terraform-gcp
     public: true
     plan:
-      - get: gcp-bucket
-        trigger: true
       - get: git-assets
         trigger: true
       - task: terraform
@@ -35,5 +33,3 @@ jobs:
           gs_secret_access_key: {{gs_secret_access_key}}
           gs_access_key_id: {{gs_access_key_id}}
           default_project_id: {{default_project_id}}
-      - put: gcp-bucket
-        params: { file: git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform/iam.tf }
