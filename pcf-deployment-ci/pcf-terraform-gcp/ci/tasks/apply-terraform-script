@@ -10,14 +10,14 @@ cat /root/.boto
 gsutil ls gs://pcf-ci-config/terraform 
 gsutil cp gs://pcf-ci-config/terraform/* git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
 ls git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
-cd git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
-terraform get
-terraform plan -out pcfplan
-export action="test"
+#cd git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
+#terraform get
+#terraform plan -out pcfplan
+export action="apply"
 if [[ $action = "apply" ]]; then
         terraform apply
 else
-        terraform destroy
+        terraform destroy -force
 fi
 
 rc=$?;
