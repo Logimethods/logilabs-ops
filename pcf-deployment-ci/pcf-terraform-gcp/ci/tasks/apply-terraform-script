@@ -1,14 +1,21 @@
 #!/bin/sh
 set -xe
+#add credentials values to template of .boto file to enable access to google cloud storage
 sed -i -- "s <gs_secret_access_key> $gs_secret_access_key g" git-assets/pcf-deployment-ci/pcf-terraform-gcp/gcp/boto.txt
 sed -i -- "s <default_project_id> $default_project_id g" git-assets/pcf-deployment-ci/pcf-terraform-gcp/gcp/boto.txt
 sed -i -- "s <gs_access_key_id> $gs_access_key_id g" git-assets/pcf-deployment-ci/pcf-terraform-gcp/gcp/boto.txt
 cp git-assets/pcf-deployment-ci/pcf-terraform-gcp/gcp/boto.txt /root/.boto
 cat /root/.boto
-gsutil ls gs://pcf-ci-data/terraform 
+#get gcloud credentials and terraform project variables from google cloud storage bucket
+gsutil ls gs://pcf-ci-config/terraform 
+gsutil cp gs://pcf-ci-config/terraform/account.json git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform/account.json
+gsutil cp gs://pcf-ci-config/terraform/terraform.tfvars git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform/terraform.tfvars
+gsutil cp gs://pcf-ci-config/terraform/terraform.tfstate git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform/terraform.tfstate
 cd git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
 terraform get
-terraform plan 
+terraform plan -out pcfplan
+terraform apply
+gsutil cp git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform/terraform.tfstate gs://pcf-ci-config/terraform/terraform.tfstate
 
 
 
