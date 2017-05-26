@@ -8,9 +8,8 @@ cp git-assets/pcf-deployment-ci/pcf-terraform-gcp/gcp/boto.txt /root/.boto
 cat /root/.boto
 #get gcloud credentials and terraform project variables from google cloud storage bucket
 gsutil ls gs://pcf-ci-config/terraform 
-gsutil cp gs://pcf-ci-config/terraform/account.json git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform/account.json
-gsutil cp gs://pcf-ci-config/terraform/terraform.tfvars git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform/terraform.tfvars
-gsutil cp -c gs://pcf-ci-config/terraform/terraform.tfstate git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform/terraform.tfstate
+gsutil cp gs://pcf-ci-config/terraform/* git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
+ls git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
 cd git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
 terraform get
 terraform plan -out pcfplan
