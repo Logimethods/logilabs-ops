@@ -10,7 +10,7 @@ cat /root/.boto
 gsutil ls gs://pcf-ci-config/terraform 
 gsutil cp gs://pcf-ci-config/terraform/account.json git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform/account.json
 gsutil cp gs://pcf-ci-config/terraform/terraform.tfvars git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform/terraform.tfvars
-gsutil cp gs://pcf-ci-config/terraform/terraform.tfstate git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform/terraform.tfstate
+gsutil cp -c gs://pcf-ci-config/terraform/terraform.tfstate git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform/terraform.tfstate
 cd git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
 terraform get
 terraform plan -out pcfplan
