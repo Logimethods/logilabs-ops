@@ -13,7 +13,21 @@ ls git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
 cd git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
 terraform get
 terraform plan -out pcfplan
-terraform apply
+export action="test"
+if [[ $action = "apply" ]]; then
+        terraform apply
+else
+        terraform destroy
+fi
+
+rc=$?;
+if [[ $rc != 0 ]]; then
+        echo "error in apply terraform"
+else
+        echo "success in terraform"
+fi
+echo "copy status"
+ls git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
 gsutil cp git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform/terraform.tfstate gs://pcf-ci-config/terraform/terraform.tfstate
 
 
