@@ -7,8 +7,8 @@ sed -i -- "s <gs_access_key_id> $gs_access_key_id g" git-assets/pcf-deployment-c
 cp git-assets/pcf-deployment-ci/pcf-terraform-gcp/gcp/boto.txt /root/.boto
 cat /root/.boto
 #get gcloud credentials and terraform project variables from google cloud storage bucket
-gsutil ls gs://pcf-ci-config/terraform 
-gsutil cp gs://pcf-ci-config/terraform/* git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
+gsutil ls gs://igortest123/teraform
+gsutil cp gs://igortest123/teraform/* git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
 ls git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
 #cd git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
 #terraform get

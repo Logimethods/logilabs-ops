@@ -1,23 +1,11 @@
----
-jobs:  
-- name: build-docker-image
-  public: true
-  serial: true
-  plan:
-  - get: git-concourse-build-docker-image
-    trigger: true
-  - put: docker-image
-    params:
-      build: git-concourse-build-docker-image/pcf-deployment-ci/concourse-build-docker-terraform
+------    paths: [pcf-deployment-ci/concourse-build-docker-terraform/Dockerfile]
 
 resources:  
-- name: git-concourse-build-docker-image
+- name: git-assets
   type: git
   source:
     uri: https://github.com/Logimethods/logilabs-ops.git
     branch: master
-    paths: [pcf-deployment-ci/concourse-build-docker-terraform/Dockerfile]
-
 - name: docker-image
   type: docker-image
   source:
@@ -25,3 +13,14 @@ resources:
     username: {{docker-hub-username}}
     password: {{docker-hub-password}}
     repository: {{docker-create-concourse-go-image}}
+    
+jobs:  
+- name: build-docker-image
+  public: true
+  plan:
+  - get: git-assets
+    trigger: true
+  - put: docker-image
+    params:
+      build: git-assets/pcf-deployment-ci/concourse-build-docker-terraform
+    

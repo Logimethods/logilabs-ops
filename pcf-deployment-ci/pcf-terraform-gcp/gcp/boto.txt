@@ -4,7 +4,7 @@
 # "gs_access_key_id") or remove important markers (like the "[Credentials]" and
 # "[Boto]" section delimiters).
 #
-# This file was created by gsutil version 4.26 at 2017-05-24 20:00:36.
+# This file was created by gsutil version 4.28 at 2018-01-10 15:36:46.
 #
 # You can create additional configuration files by running
 # gsutil config [options] [-o <config-file>]
@@ -12,13 +12,15 @@
 
 [Credentials]
 
-# To add Google OAuth2 credentials ("gs://" URIs), edit and uncomment the
-# following line:
-#gs_oauth2_refresh_token = <your OAuth2 refresh token>
+# Google OAuth2 credentials (for "gs://" URIs):
+# The following OAuth2 account is authorized for scope(s):
+#     https://www.googleapis.com/auth/cloud-platform
+gs_oauth2_refresh_token = 1/uqrE7OjxtjZGzn9-i3DB1yoRF0VJrM21-rWNZ9YnK2M
 
-# google credentials ("gs://" URIs):
-gs_access_key_id = <gs_access_key_id>
-gs_secret_access_key = <gs_secret_access_key>
+# To add HMAC google credentials for "gs://" URIs, edit and uncomment the
+# following two lines:
+gs_access_key_id = GOOGV37E2VFECQUL6ZMV
+gs_secret_access_key = lu8xLmvY78/qLY1+Cn+LPI+htyhjpEq5ZxNoZZyq
 # The ability to specify an alternate storage host and port
 # is primarily for cloud storage service developers.
 # Setting a non-default gs_host only works if prefer_api=xml.
@@ -57,7 +59,7 @@ gs_secret_access_key = <gs_secret_access_key>
 # 'False' (to avoid breaking apps that depend on invalid certificates); it is
 # therefore strongly recommended to always set this option explicitly to True
 # in configuration files, to protect against "man-in-the-middle" attacks.
-https_validate_certificates = True
+https_validate_certificates = False
 
 # 'debug' controls the level of debug messages printed for the XML API only:
 # 0 for none, 1 for basic boto debug, 2 for all boto debug plus HTTP
@@ -88,8 +90,12 @@ https_validate_certificates = True
 # To use a proxy, edit and uncomment the proxy and proxy_port lines.
 # If you need a user/password with this proxy, edit and uncomment
 # those lines as well. If your organization also disallows DNS
-# lookups by client machines set proxy_rdns = True
-# If proxy_host and proxy_port are not specified in this file and
+# lookups by client machines, set proxy_rdns to True (the default).
+# If you have installed gsutil through the Cloud SDK and have 
+# configured proxy settings in gcloud, those proxy settings will 
+# override any other options (including those set here, along with 
+# any settings in proxy-related environment variables). Otherwise, 
+# if proxy_host and proxy_port are not specified in this file and
 # one of the OS environment variables http_proxy, https_proxy, or
 # HTTPS_PROXY is defined, gsutil will use the proxy server specified
 # in these environment variables, in order of precedence according
@@ -164,7 +170,7 @@ https_validate_certificates = True
 # https://github.com/GoogleCloudPlatform/gsutil/issues/77 before attempting
 # to experiment with these values.
 #parallel_process_count = 1
-#parallel_thread_count = 5
+#parallel_thread_count = 24
 
 # 'parallel_composite_upload_threshold' specifies the maximum size of a file to
 # upload in a single stream. Files larger than this threshold will be
@@ -203,7 +209,7 @@ https_validate_certificates = True
 # 'sliced_object_download_threshold' and
 # 'sliced_object_download_component_size' have analogous functionality to
 # their respective parallel_composite_upload config values.
-# 'sliced_object_download_max_components' specifies the maximum number of
+# 'sliced_object_download_max_components' specifies the maximum number of 
 # slices to be used when performing a sliced object download. It is not
 # restricted by MAX_COMPONENT_COUNT.
 #sliced_object_download_threshold = 0
@@ -274,10 +280,13 @@ content_language = en
 # storage service developers.
 #json_api_version = v1
 
-# Specifies the API to use when interacting with cloud storage providers.  If
-# the gsutil command supports this API for the provider, it will be used
-# instead of the default.
-# Commands typically default to XML for S3 and JSON for GCS.
+# Specifies the API to use when interacting with cloud storage providers. If the
+# gsutil command supports this API for the provider, it will be used instead of
+# the default API. Commands typically default to XML for S3 and JSON for GCS.
+# Note that if any encryption configuration options are set (see above), the
+# JSON API will be used for interacting with Google Cloud Storage buckets even
+# if XML is preferred, as gsutil does not currently support this functionality
+# when using the XML API.
 #prefer_api = json
 #prefer_api = xml
 
@@ -287,14 +296,7 @@ content_language = en
 
 # 'default_api_version' specifies the default Google Cloud Storage XML API
 # version to use. If not set below gsutil defaults to API version 1.
-default_api_version = 1
-
-# 'default_project_id' specifies the default Google Cloud Storage project ID to
-# use with the 'mb' and 'ls' commands. This default can be overridden by
-# specifying the -p option to the 'mb' and 'ls' commands.
-default_project_id = <default_project_id>
-
-
+default_api_version = 2
 
 [OAuth2]
 # This section specifies options used with OAuth2 authentication.

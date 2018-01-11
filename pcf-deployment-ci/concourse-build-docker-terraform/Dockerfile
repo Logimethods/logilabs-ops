@@ -1,9 +1,9 @@
 FROM python:2.7-alpine
 LABEL maintainer "igor.fomenko@logimethods.com"
 
-ENV TERRAFORM_VERSION=0.9.4
-ENV TERRAFORM_SHA256SUM=cc1cffee3b82820b7f049bb290b841762ee920aef3cf4d95382cc7ea01135707
-ENV GSUTIL_VERSION=4.24
+ENV TERRAFORM_VERSION=0.11.1
+ENV TERRAFORM_SHA256SUM=4e3d5e4c6a267e31e9f95d4c1b00f5a7be5a319698f0370825b459cb786e2f35
+ENV GSUTIL_VERSION=4.28
 
 #install deps and install gsutil
 RUN apk add --update git curl openssh && \
