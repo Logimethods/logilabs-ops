@@ -17,7 +17,7 @@ terraform init
 if [[ $action = "apply" ]]; then
         terraform apply -auto-approve
 else
-        terraform destroy -auto-approve
+        terraform destroy -force
 fi
 
 rc=$?;

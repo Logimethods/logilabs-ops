@@ -13,7 +13,7 @@ jobs:
     plan:
       - get: git-assets
         trigger: true
-      - task: terraform
+      - task: terraform-apply
         file: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/apply-terraform.yml
         params:
           GOOGLE_CREDENTIALS: {{google_credentials}}
@@ -23,3 +23,13 @@ jobs:
           gs_access_key_id: {{gs_access_key_id}}
           default_project_id: {{default_project_id}}
           action: apply
+      - task: terraform-destroy
+        file: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/apply-terraform.yml
+        params:
+          GOOGLE_CREDENTIALS: {{google_credentials}}
+          TF_VAR_ssl_cert: {{ssl_cert}}
+          TF_VAR_ssl_cert_private_key: {{ssl_cert_private_key}}
+          gs_secret_access_key: {{gs_secret_access_key}}
+          gs_access_key_id: {{gs_access_key_id}}
+          default_project_id: {{default_project_id}}
+          action: destroy
