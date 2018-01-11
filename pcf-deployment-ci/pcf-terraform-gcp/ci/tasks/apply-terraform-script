@@ -27,8 +27,8 @@ else
         echo "success in terraform"
 fi
 echo "copy status"
-ls git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
-gsutil cp git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform/terraform.tfstate gs://igortest123/teraform/terraform.tfstate
+ls
+gsutil cp terraform.tfstate gs://igortest123/teraform/terraform.tfstate
 
 
 
