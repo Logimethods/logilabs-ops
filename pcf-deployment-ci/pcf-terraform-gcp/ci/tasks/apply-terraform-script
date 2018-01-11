@@ -13,11 +13,11 @@ cd git-assets/pcf-deployment-ci/pcf-terraform-gcp/terraform
 #terraform get
 terraform init
 
-export action="apply"
+#export action="apply"
 if [[ $action = "apply" ]]; then
         terraform apply -auto-approve
 else
-        terraform destroy -force
+        terraform destroy -auto-approve
 fi
 
 rc=$?;

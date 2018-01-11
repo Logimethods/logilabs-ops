@@ -16,6 +16,7 @@ params:
   gs_secret_access_key:
   gs_access_key_id:
   default_project_id:
+  action:
   
 run:
   path: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/apply-terraform-script

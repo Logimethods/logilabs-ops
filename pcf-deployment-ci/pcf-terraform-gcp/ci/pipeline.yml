@@ -22,3 +22,4 @@ jobs:
           gs_secret_access_key: {{gs_secret_access_key}}
           gs_access_key_id: {{gs_access_key_id}}
           default_project_id: {{default_project_id}}
+          action: apply
