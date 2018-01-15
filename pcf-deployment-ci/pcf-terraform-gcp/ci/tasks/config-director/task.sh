@@ -16,6 +16,10 @@ iaas_configuration=$(
     '
 )
 
+echo $iaas_configuration
+echo "echo"
+echo $gcp_project
+
 availability_zones="${GCP_ZONE_1},${GCP_ZONE_2},${GCP_ZONE_3}"
 
 az_configuration=$(
