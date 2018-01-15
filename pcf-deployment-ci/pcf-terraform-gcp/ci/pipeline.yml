@@ -4,13 +4,6 @@ resources:
   source:
     branch: master
     uri: https://github.com/Logimethods/logilabs-ops.git
-    
-- name: pcf-pipelines-tarball
-  type: pivnet
-  source:
-    api_token: {{pivnet_token}}
-    product_slug: pcf-automation
-    product_version: v0.16.0
  
 jobs:
   - name: terraform-gcp
@@ -27,40 +20,13 @@ jobs:
           gs_access_key_id: {{gs_access_key_id}}
           default_project_id: {{default_project_id}}
           action: apply
-  - name: configure-director
+  - name: configure-opsman
     public: true
     plan:
-      - aggregate:
-            - do:
-              - get: pcf-pipelines-tarball
-              - task: unpack-tarball
-                config:
-                  platform: linux
-                  image_resource:
-                    type: docker-image
-                    source:
-                      repository: czero/cflinuxfs2
-                  run:
-                    path: bash
-                    args:
-                    - -c
-                    - tar -xvf pcf-pipelines-tarball/*.tgz
-                    dir: ""
-                  inputs:
-                  - name: pcf-pipelines-tarball
-                    path: ""
-                  outputs:
-                  - name: pcf-pipelines
-                    path: ""
-            - get: pivnet-opsmgr
-              params:
-                globs: []
-      - task: check-opsman-dns
-        file: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/check-opsman-dns/task.yml
-        params:
-          pcf_ert_domain: {{pcf_ert_domain}}
+      - get: git-assets
+        trigger: true
       - task: config-opsman-auth
-        file: pcf-pipelines/tasks/config-opsman/task.yml
+        file: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/config-opsman/task.yml
         params:
           OM_DECRYPTION_PWD: {{pcf_opsman_admin_password}}
           OPS_MGR_PWD: {{pcf_opsman_admin_password}}

@@ -13,7 +13,8 @@ params:
   OM_DECRYPTION_PWD:
 
 inputs:
-  - name: pcf-pipelines
+  - name: git-assets
 
 run:
   path: pcf-pipelines/tasks/config-opsman/task.sh
+  path: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/config-opsman/task
