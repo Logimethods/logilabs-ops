@@ -33,7 +33,7 @@ az_configuration=$(
 )
 
 echo "availability_zones"
-echo $availability_zones
+echo $az_configuration
 
 network_configuration=$(
   jq -n \
