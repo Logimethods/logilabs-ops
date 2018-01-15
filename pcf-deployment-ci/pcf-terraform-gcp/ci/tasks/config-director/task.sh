@@ -2,6 +2,8 @@
 
 set -eu
 
+echo "iaas_configuration"
+
 iaas_configuration=$(
   jq -n \
     --arg gcp_project "$GCP_PROJECT_ID" \
@@ -17,8 +19,7 @@ iaas_configuration=$(
 )
 
 echo $iaas_configuration
-echo "echo"
-echo $gcp_project
+
 
 availability_zones="${GCP_ZONE_1},${GCP_ZONE_2},${GCP_ZONE_3}"
 
@@ -30,6 +31,9 @@ az_configuration=$(
       "availability_zones": ($availability_zones | split(",") | map({name: .}))
     }'
 )
+
+echo "availability_zones"
+echo $availability_zones
 
 network_configuration=$(
   jq -n \
@@ -106,6 +110,9 @@ network_configuration=$(
     }'
 )
 
+echo "network_configuration"
+echo $network_configuration
+
 director_config=$(cat <<-EOF
 {
   "ntp_servers_string": "0.pool.ntp.org",
@@ -117,6 +124,8 @@ director_config=$(cat <<-EOF
 EOF
 )
 
+echo "director_config"
+echo $director_config
 resource_configuration=$(cat <<-EOF
 {
   "director": {
@@ -129,6 +138,9 @@ resource_configuration=$(cat <<-EOF
 EOF
 )
 
+echo "resource_configuration"
+echo $resource_configuration
+
 security_configuration=$(
   jq -n \
     --arg trusted_certificates "$OPS_MGR_TRUSTED_CERTS" \
@@ -138,6 +150,9 @@ security_configuration=$(
       "vm_password_type": "generate"
     }'
 )
+
+echo "security_configuration"
+echo $security_configuration
 
 network_assignment=$(
   jq -n \
@@ -149,6 +164,9 @@ network_assignment=$(
       "network": $network
     }'
 )
+
+echo "network_assignment"
+echo $network_assignment
 
 echo "Configuring IaaS and Director..."
 om-linux \
