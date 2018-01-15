@@ -16,5 +16,4 @@ inputs:
   - name: git-assets
 
 run:
-  path: pcf-pipelines/tasks/config-opsman/task.sh
-  path: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/config-opsman/task
+  path: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/config-opsman/task.sh
