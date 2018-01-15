@@ -183,5 +183,5 @@ om-linux \
 #   --iaas-configuration "$iaas_configuration" \
 #--security-configuration "$security_configuration" \
 #--resource-configuration "$resource_configuration" \
- --networks-configuration "$network_configuration" \
-  --network-assignment "$network_assignment" 
+# --networks-configuration "$network_configuration" \
+# --network-assignment "$network_assignment" 
