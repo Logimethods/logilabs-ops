@@ -37,7 +37,7 @@ resource "google_compute_instance" "ops-manager" {
     subnetwork = "${google_compute_subnetwork.management-subnet.name}"
 
     access_config {
-      nat_ip = "${google_compute_address.ops-manager-ip.address}"
+      nat_ip = "35.229.24.116"
     }
   }
 
