@@ -26,7 +26,6 @@ jobs:
     serial: true
     plan:
       - get: git-assets
-        trigger: true
         passed:
         - create-infrastructure
       - task: config-opsman-auth
@@ -65,7 +64,7 @@ jobs:
     public: true
     serial: true
     plan:
-      - get: git-assets
+      - get: git-assets     
       - task: terraform-apply
         file: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/apply-terraform.yml
         params:

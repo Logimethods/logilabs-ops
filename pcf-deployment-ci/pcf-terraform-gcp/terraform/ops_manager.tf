@@ -15,9 +15,9 @@ resource "google_compute_firewall" "ops-manager-external" {
 }
 
 
-resource "google_compute_address" "ops-manager-ip" {
-  name = "${var.env_name}-ops-manager-ip"
-}
+#resource "google_compute_address" "ops-manager-ip" {
+#  name = "${var.env_name}-ops-manager-ip"
+#}
 
 resource "google_compute_instance" "ops-manager" {
   name           = "${var.env_name}-ops-manager"
