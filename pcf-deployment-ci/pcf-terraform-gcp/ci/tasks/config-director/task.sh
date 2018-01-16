@@ -39,10 +39,10 @@ network_configuration=$(
   jq -n \
     --argjson icmp_checks_enabled false \
     --arg infra_network_name "infrastructure" \
-    --arg infra_vcenter_network "${GCP_RESOURCE_PREFIX}-virt-net/${GCP_RESOURCE_PREFIX}-subnet-infrastructure-${GCP_REGION}/${GCP_REGION}" \
-    --arg infra_network_cidr "192.168.101.0/26" \
-    --arg infra_reserved_ip_ranges "192.168.101.1-192.168.101.9" \
-    --arg infra_dns "192.168.101.1,8.8.8.8" \
+    --arg infra_vcenter_network "${GCP_RESOURCE_PREFIX}-pcf-network/${GCP_RESOURCE_PREFIX}-mnagement-subnet/${GCP_REGION}" \
+    --arg infra_network_cidr "10.0.0.0/24" \
+    --arg infra_reserved_ip_ranges "10.0.0.1-10.0.0.9" \
+    --arg infra_dns "10.0.0.1,8.8.8.8" \
     --arg infra_gateway "192.168.101.1" \
     --arg infra_availability_zones "$availability_zones" \
     --arg deployment_network_name "ert" \
@@ -176,7 +176,8 @@ om-linux \
   --password $OPS_MGR_PWD \
   configure-bosh \
   --director-configuration "$director_config" \
-  --az-configuration "$az_configuration"
+  --az-configuration "$az_configuration" \
+  --networks-configuration "$network_configuration" 
  
   
   

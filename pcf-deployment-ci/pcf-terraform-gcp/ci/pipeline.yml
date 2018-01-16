@@ -6,8 +6,9 @@ resources:
     uri: https://github.com/Logimethods/logilabs-ops.git
  
 jobs:
-  - name: terraform-gcp
+  - name: create-infrastructure
     public: true
+    serial: true
     plan:
       - get: git-assets
         trigger: true
@@ -22,9 +23,12 @@ jobs:
           action: apply
   - name: configure-opsman
     public: true
+    serial: true
     plan:
       - get: git-assets
         trigger: true
+        passed:
+        - create-infrastructure
       - task: config-opsman-auth
         file: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/config-opsman/task.yml
         params:
@@ -57,3 +61,18 @@ jobs:
           OPS_MGR_TRUSTED_CERTS: {{pcf_opsman_trusted_certs}}
           OPS_MGR_USR: {{pcf_opsman_admin_username}}
           OPSMAN_DOMAIN_OR_IP_ADDRESS: {{opsman_domain_or_ip_address}}               
+  - name: destroy-infrastructure
+    public: true
+    serial: true
+    plan:
+      - get: git-assets
+      - task: terraform-apply
+        file: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks/apply-terraform.yml
+        params:
+          TF_VAR_ssl_cert: {{ssl_cert}}
+          TF_VAR_ssl_cert_private_key: {{ssl_cert_private_key}}
+          gs_secret_access_key: {{gs_secret_access_key}}
+          gs_access_key_id: {{gs_access_key_id}}
+          default_project_id: {{default_project_id}}
+          action: destroy
+    
