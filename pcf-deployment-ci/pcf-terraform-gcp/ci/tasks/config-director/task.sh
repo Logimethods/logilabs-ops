@@ -175,12 +175,9 @@ om-linux \
   --username $OPS_MGR_USR \
   --password $OPS_MGR_PWD \
   configure-bosh \
-  --iaas-configuration "$iaas_configuration" 
-
- 
-  
-#   --director-configuration "$director_config" \
-#  --az-configuration "$az_configuration" \
+  --iaas-configuration "$iaas_configuration" \
+  --director-configuration "$director_config" \
+  --az-configuration "$az_configuration" \
 #  --networks-configuration "$network_configuration"  
 #   --iaas-configuration "$iaas_configuration" \
 #--security-configuration "$security_configuration" \
