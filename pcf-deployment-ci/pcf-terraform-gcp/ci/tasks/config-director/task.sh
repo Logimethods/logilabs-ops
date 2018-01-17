@@ -41,7 +41,7 @@ network_configuration=$(
     --arg infra_network_name "pcf-meetup-pcf-network" \
     --arg infra_vcenter_network "$GCP_PROJECT_ID/${GCP_RESOURCE_PREFIX}-pcf-network/${GCP_RESOURCE_PREFIX}-management-subnet/${GCP_REGION}" \
     --arg infra_network_cidr "10.0.0.0/24" \
-    --arg infra_reserved_ip_ranges "10.0.0.1-10.0.0.9" \
+    --arg infra_reserved_ip_ranges "10.0.0.1-10.0.0.10" \
     --arg infra_dns "10.0.0.1,8.8.8.8" \
     --arg infra_gateway "10.0.0.1" \
     --arg infra_availability_zones "$availability_zones" \
