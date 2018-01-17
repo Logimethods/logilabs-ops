@@ -122,7 +122,7 @@ network_assignment=$(
     }'
 )
 
-echo "network_assignment"
+echo "changemark"
 echo $network_assignment
 
 echo "Configuring IaaS and Director..."
