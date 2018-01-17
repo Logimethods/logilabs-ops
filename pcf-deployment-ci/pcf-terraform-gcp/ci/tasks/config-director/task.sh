@@ -114,7 +114,7 @@ echo $security_configuration
 network_assignment=$(
   jq -n \
     --arg availability_zones "$availability_zones" \
-    --arg network "infrastructure" \
+    --arg network "pcf-meetup-pcf-network" \
     '
     {
       "singleton_availability_zone": ($availability_zones | split(",") | .[0]),
@@ -136,7 +136,8 @@ om-linux \
   --director-configuration "$director_config" \
   --az-configuration "$az_configuration" \
   --networks-configuration "$network_configuration" \
-  --network-assignment "$network_assignment" 
+  --network-assignment "$network_assignment" \
+  --resource-configuration "$resource_configuration"
   
 #   --iaas-configuration "$iaas_configuration" \
 #--security-configuration "$security_configuration" \
