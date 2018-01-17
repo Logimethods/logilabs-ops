@@ -125,7 +125,7 @@ network_assignment=$(
 echo "changemark"
 echo $network_assignment
 
-echo "Configuring IaaS and Director..."
+echo "Configuring IaaS and Director...1"
 om-linux \
   --target https://$OPSMAN_DOMAIN_OR_IP_ADDRESS \
   --skip-ssl-validation \
@@ -134,10 +134,26 @@ om-linux \
   configure-bosh \
   --iaas-configuration "$iaas_configuration" \
   --director-configuration "$director_config" \
-  --az-configuration "$az_configuration" \
+  --az-configuration "$az_configuration"
+  
+echo "Configuring IaaS and Director...2"
+om-linux \
+  --target https://$OPSMAN_DOMAIN_OR_IP_ADDRESS \
+  --skip-ssl-validation \
+  --username $OPS_MGR_USR \
+  --password $OPS_MGR_PWD \
+  configure-bosh \
   --networks-configuration "$network_configuration" \
-  --network-assignment "$network_assignment" \
   --resource-configuration "$resource_configuration"
+  
+echo "Configuring IaaS and Director...3"
+om-linux \
+  --target https://$OPSMAN_DOMAIN_OR_IP_ADDRESS \
+  --skip-ssl-validation \
+  --username $OPS_MGR_USR \
+  --password $OPS_MGR_PWD \
+  configure-bosh \
+  --network-assignment "$network_assignment"
   
 #   --iaas-configuration "$iaas_configuration" \
 #--security-configuration "$security_configuration" \
