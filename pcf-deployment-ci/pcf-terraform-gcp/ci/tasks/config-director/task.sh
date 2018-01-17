@@ -135,7 +135,9 @@ om-linux \
   --iaas-configuration "$iaas_configuration" \
   --director-configuration "$director_config" \
   --az-configuration "$az_configuration" \
-  --networks-configuration "$network_configuration"  
+  --networks-configuration "$network_configuration" \
+  --network-assignment "$network_assignment" 
+  
 #   --iaas-configuration "$iaas_configuration" \
 #--security-configuration "$security_configuration" \
 #--resource-configuration "$resource_configuration" \
