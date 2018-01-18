@@ -20,7 +20,7 @@ image_resource:
   source: {repository: czero/cflinuxfs2}
 
 inputs:
-  - name: pcf-pipelines
+- name: git-assets
 
 params:
   OPSMAN_USERNAME:
@@ -28,4 +28,4 @@ params:
   OPSMAN_DOMAIN_OR_IP_ADDRESS:
 
 run:
-  path: pcf-pipelines/tasks/apply-changes/task.sh
+  path: git-assets/pcf-deployment-ci/pcf-terraform-gcp/ci/tasks//apply-changes/task.sh
