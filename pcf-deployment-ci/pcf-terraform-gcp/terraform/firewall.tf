@@ -1,7 +1,7 @@
 ## Ops manager to director
 resource "google_compute_firewall" "pcf-allow-director" {
   name    = "${var.env_name}-allow-director"
-  network = "pcf-meetup-pcf-network"
+  network = "${google_compute_network.pcf-network.name}"
 
   allow {
     protocol = "all"
